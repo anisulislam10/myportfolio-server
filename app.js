@@ -13,10 +13,11 @@ dotenv.config();
 
 const app= express();
 app.use(express.json());
+// Convert `import.meta.url` to `__dirname` (since ESM doesn't support `__dirname` directly)
 // Static Files (If Using File Uploads)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 app.use(cors({ 
     origin: ["http://localhost:5175", "http://localhost:5173", "https://anis-gamma.vercel.app"], 

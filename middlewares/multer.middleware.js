@@ -9,10 +9,10 @@ const __dirname = path.dirname(__filename);
 // ✅ Set up Multer storage configuration
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, "uploads/")); // ✅ Absolute path for safety
+        cb(null, path.join(process.cwd(), "uploads")); // ✅ Correct path for root directory
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); // ✅ Ensure path is defined
+        cb(null, `${Date.now()}-${file.originalname}`); // ✅ Preserve original name for clarity
     }
 });
 
@@ -32,6 +32,5 @@ const upload = multer({
     fileFilter: fileFilter,
     limits: { fileSize: 5 * 1024 * 1024 } // Max 5MB
 });
-
 
 export default upload;
