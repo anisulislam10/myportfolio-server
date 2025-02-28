@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 // ✅ Set up Multer storage configuration
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, "../uploads/")); // ✅ Absolute path for safety
+        cb(null, path.join(__dirname, "uploads/")); // ✅ Absolute path for safety
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname)); // ✅ Ensure path is defined

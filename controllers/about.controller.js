@@ -5,8 +5,7 @@ import path from "path";
 export const createAbout = async (req, res) => {
     try {
         const { title, description } = req.body;
-        const image = req.file ? `/uploads/${req.file.filename}` : "";  
-
+        const image = req.file ? `/uploads/${req.file.filename}` : null;
         if (!title || !description) {
             return res.status(400).json({ 
                 success: false, 
