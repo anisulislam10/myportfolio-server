@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 app.use("/uploads", express.static(path.join(__dirname, "uploads"))); 
 
 app.use(cors({ 
-    origin: ["http://localhost:5175", "http://localhost:5173"], 
+    origin: ["http://localhost:5175", "http://localhost:5173", "https://anis-gamma.vercel.app"], 
     credentials: true 
   }));
 app.use('/api/auth', authRoutes)
